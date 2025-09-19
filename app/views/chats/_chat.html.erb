@@ -1,0 +1,5 @@
+<div id="<%= dom_id chat %>" class="space-y-2">
+  <p><strong>Model:</strong> <span class="text-gray-700"><%= chat.model_association.name %></span></p>
+  <p><strong>Messages:</strong> <span class="text-gray-700"><%= chat.messages_association.count %></span></p>
+  <p><strong>Created:</strong> <span class="text-gray-500"><%= chat.created_at.strftime("%B %d, %Y at %I:%M %p") %></span></p>
+</div>

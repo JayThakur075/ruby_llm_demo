@@ -1,0 +1,17 @@
+<%= form_with(model: [chat, message], id: "new_message", class: "flex space-x-2 mt-4") do |form| %>
+  <% if message.errors.any? %>
+    <div class="bg-red-100 border border-red-400 text-red-700 p-3 rounded w-full mb-2">
+      <h2 class="font-semibold"><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+      <ul class="list-disc list-inside">
+        <% message.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.text_field :content, class: "flex-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500",
+      placeholder: " Message...", autofocus: true %>
+
+  <%= form.submit "Send", class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+<% end %>

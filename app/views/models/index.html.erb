@@ -1,0 +1,33 @@
+<p class="text-green-600 mb-4"><%= notice %></p>
+
+<% content_for :title, "Models" %>
+
+<h1 class="text-2xl font-bold mb-6">Models</h1>
+
+<div class="mb-4">
+  <%= button_to "Refresh Models", refresh_models_path, method: :post,
+      class: "bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" %>
+</div>
+
+<div id="models" class="overflow-x-auto">
+  <table class="min-w-full border border-gray-200 bg-white rounded-lg shadow">
+    <thead class="bg-gray-100 text-left text-gray-700">
+      <tr>
+        <th class="px-4 py-2">Provider</th>
+        <th class="px-4 py-2">Model</th>
+        <th class="px-4 py-2">Context Window</th>
+        <th class="px-4 py-2">$/1M tokens (In/Out)</th>
+        <th colspan="2" class="px-4 py-2"></th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      <% @models.values.flatten.each do |model| %>
+        <%= render model %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="mt-6">
+  <%= link_to "Back to chats", chats_path, class: "text-blue-600 hover:underline" %>
+</div>

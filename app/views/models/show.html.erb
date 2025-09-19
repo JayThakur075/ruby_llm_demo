@@ -1,0 +1,24 @@
+<% content_for :title, @model.name %>
+
+<div class="bg-white shadow rounded-lg p-6 space-y-4">
+  <h1 class="text-2xl font-bold text-gray-900"><%= @model.name %></h1>
+
+  <p><strong class="text-gray-700">ID:</strong> <span class="text-gray-800"><%= @model.model_id %></span></p>
+  <p><strong class="text-gray-700">Provider:</strong> <span class="text-gray-800"><%= @model.provider %></span></p>
+  <p><strong class="text-gray-700">Context Window:</strong> <span class="text-gray-800"><%= number_with_delimiter(@model.context_window) %> tokens</span></p>
+  <p><strong class="text-gray-700">Max Output:</strong> <span class="text-gray-800"><%= number_with_delimiter(@model.max_output_tokens) %> tokens</span></p>
+
+  <% if @model.capabilities.any? %>
+    <p>
+      <strong class="text-gray-700">Capabilities:</strong>
+      <span class="text-gray-800"><%= @model.capabilities.join(", ") %></span>
+    </p>
+  <% end %>
+
+  <div class="pt-4 space-x-4">
+    <%= link_to "Start chat with this model", new_chat_path(model: @model.model_id),
+        class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+    <%= link_to "All models", models_path, class: "text-blue-600 hover:underline" %>
+    <%= link_to "Back to chats", chats_path, class: "text-blue-600 hover:underline" %>
+  </div>
+</div>

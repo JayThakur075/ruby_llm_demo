@@ -1,0 +1,14 @@
+<%= tag.div id: dom_id(message), class: "p-3 rounded-lg shadow bg-white #{message.role == 'user' ? 'border-l-4 border-blue-500' : 'border-l-4 border-green-500'}" do %>
+
+  <div class="font-semibold text-sm mb-1 text-gray-800">
+    <%= message.role&.capitalize %>
+  </div>
+
+  <div class="whitespace-pre-wrap text-gray-700">
+    <%= message.content %>
+  </div>
+
+  <div class="text-xs text-gray-500 mt-1">
+    <%= message.created_at&.strftime("%I:%M %p") %>
+  </div>
+<% end %>

@@ -1,0 +1,20 @@
+<p class="text-green-600 mb-4"><%= notice %></p>
+
+<% content_for :title, "Chats" %>
+
+<h1 class="text-2xl font-bold mb-6">Chats</h1>
+
+<div id="chats" class="space-y-4">
+  <% @chats.each do |chat| %>
+    <div class="p-4 border rounded-lg shadow bg-white hover:bg-gray-50 transition">
+      <%= render chat %>
+      <p class="mt-2">
+        <%= link_to "Show this chat", chat, class: "text-blue-600 hover:underline" %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<div class="mt-6">
+  <%= link_to "New chat", new_chat_path, class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+</div>
